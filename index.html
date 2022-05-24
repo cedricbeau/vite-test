@@ -13,7 +13,7 @@
       <h1 x-text="title"
           class="my-4 text-4xl font-medium text-center"></h1>
 
-      <!-- Toggle content -->
+      <!-- Toggle component -->
       <div x-data="toggle" class="mb-4 p-4 bg-white rounded-sm shadow-sm">
         <h2 class="mb-4 text-2xl font-semibold">Toggle content</h2>
         <button @click="handleClick"
@@ -22,6 +22,7 @@
         <div x-show="show"
               class="mt-4 p-4 text-white bg-cyan-900 rounded-sm"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet a expedita exercitationem omnis recusandae, aspernatur nesciunt eaque reiciendis accusamus, animi ut! Ipsam nam provident minus tempore. Explicabo nemo nam officiis!</p></div>
       </div>
+      <!-- Tabs component -->
       <div x-data="{ currentTab: 1}" class="mb-4 p-4 bg-white rounded-sm shadow-sm">
         <h2 class="mb-4 text-2xl font-semibold">Tabz</h2>
         <ul class="flex">
@@ -81,6 +82,7 @@
           </div>
         </div>
       </div>
+      <!-- Modale component -->
       <div x-data="{ open: false}" class="mb-4 p-4 bg-white rounded-sm shadow-sm">
         <h2 class="mb-4 text-2xl font-semibold">Modal</h2>
         <button @click="open = true"
@@ -102,10 +104,12 @@
           </div>
         </div>
       </div>
+      <!-- Alert component -->
       <div x-data="hello" class="mb-4 p-4 bg-white rounded-sm shadow-sm">
         <h2 class="mb-4 text-2xl font-semibold">Alert</h2>
         <button @click="sayHello" class="py-2 px-4 border rounded-sm">Hello</button>
       </div>
+      <!-- Fetch posts component -->
       <div x-data="posts" class="mb-4 p-4 bg-white rounded-sm shadow-sm">
         <h2 class="mb-4 text-2xl font-semibold">Fetch Posts</h2>
         <ul class="flex flex-wrap -m-1.5 md:-m-2">
