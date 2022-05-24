@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ViteJS, AlpineJS & Tailwind!</title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body class="min-h-screen text-slate-700 bg-slate-100">
+    <div id="app"
+         x-data="{ title: 'Hello ViteJS, AlpineJS & Tailwind!'}"
+         class="max-w-screen-2xl mx-auto px-4">
+      <h1 x-text="title"
+          class="my-4 text-4xl text-center"></h1>
+      <div class="p-4 bg-white rounded-sm shadowed">
+        <div x-data="{ show: false}"
+             class="p-4 border rounded-sm">
+          <button @click="show = ! show"
+                  class="py-1 px-4 text-white rounded-sm"
+                  :class="{'bg-cyan-900': show === true, 'bg-cyan-500': show === false}">voir</button>
+          <div x-show="show"
+                class="mt-4 p-4 text-white bg-cyan-900 rounded-sm"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet a expedita exercitationem omnis recusandae, aspernatur nesciunt eaque reiciendis accusamus, animi ut! Ipsam nam provident minus tempore. Explicabo nemo nam officiis!</p></div>
+        </div>
+        <div x-data="{ currentTab: 1}"
+             class="mt-4 p-4 border rounded-sm">
+          <ul class="flex">
+            <li>
+              <button @click="currentTab = 1"
+                      class="py-1.5 px-4 text-white"
+                      :class="{'bg-cyan-900': currentTab === 1, 'bg-cyan-500': currentTab != 1}">item 1</button>
+            </li>
+            <li>
+              <button @click="currentTab = 2"
+                      class="py-1.5 px-4 text-white"
+                      :class="{'bg-cyan-900': currentTab === 2, 'bg-cyan-500': currentTab != 2}">item 2</button>
+            </li>
+            <li>
+              <button @click="currentTab = 3"
+                      class="py-1.5 px-4 text-white"
+                      :class="{'bg-cyan-900': currentTab === 3, 'bg-cyan-500': currentTab != 3}">item 3</button>
+            </li>
+            <li>
+              <button @click="currentTab = 4"
+                      class="py-1.5 px-4 text-white"
+                      :class="{'bg-cyan-900': currentTab === 4, 'bg-cyan-500': currentTab != 4}">item 4</button>
+            </li>
+          </ul>
+          <div class="border border-cyan-900">
+            <div x-show="currentTab === 1"
+                 class="p-4">
+              <h3 class="mb-4 text-lg font-semibold">Item 1</h3>
+              <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos animi, expedita dolorum ipsum nam doloribus velit alias commodi libero voluptates. Non rerum minus eum deleniti eveniet? Ullam voluptate suscipit adipisci.</p>
+              <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur esse, ratione ipsum non fugiat molestias. Minus nulla hic eaque alias totam, commodi illum nesciunt, deserunt aliquam iure doloribus qui quam.</p>
+              <p class="mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam eius laudantium reprehenderit libero magnam est deserunt ipsum asperiores fuga, minus sapiente ipsam corporis quas, aperiam tempora aliquam minima modi? Architecto.</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto cupiditate eum quisquam accusantium maiores nam totam hic incidunt maxime expedita, molestias fugiat illum deleniti voluptatem ad error iste quo eligendi!</p>
+            </div>
+            <div x-show="currentTab === 2"
+                 class="p-4">
+              <h3 class="mb-4 text-lg font-semibold">Item 2</h3>
+              <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos animi, expedita dolorum ipsum nam doloribus velit alias commodi libero voluptates. Non rerum minus eum deleniti eveniet? Ullam voluptate suscipit adipisci.</p>
+              <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur esse, ratione ipsum non fugiat molestias. Minus nulla hic eaque alias totam, commodi illum nesciunt, deserunt aliquam iure doloribus qui quam.</p>
+              <p class="mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam eius laudantium reprehenderit libero magnam est deserunt ipsum asperiores fuga, minus sapiente ipsam corporis quas, aperiam tempora aliquam minima modi? Architecto.</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto cupiditate eum quisquam accusantium maiores nam totam hic incidunt maxime expedita, molestias fugiat illum deleniti voluptatem ad error iste quo eligendi!</p>
+            </div>
+            <div x-show="currentTab === 3"
+                 class="p-4">
+              <h3 class="mb-4 text-lg font-semibold">Item 3</h3>
+              <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos animi, expedita dolorum ipsum nam doloribus velit alias commodi libero voluptates. Non rerum minus eum deleniti eveniet? Ullam voluptate suscipit adipisci.</p>
+              <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur esse, ratione ipsum non fugiat molestias. Minus nulla hic eaque alias totam, commodi illum nesciunt, deserunt aliquam iure doloribus qui quam.</p>
+              <p class="mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam eius laudantium reprehenderit libero magnam est deserunt ipsum asperiores fuga, minus sapiente ipsam corporis quas, aperiam tempora aliquam minima modi? Architecto.</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto cupiditate eum quisquam accusantium maiores nam totam hic incidunt maxime expedita, molestias fugiat illum deleniti voluptatem ad error iste quo eligendi!</p>
+            </div>
+            <div x-show="currentTab === 4"
+                 class="p-4">
+              <h3 class="mb-4 text-lg font-semibold">Item 4</h3>
+              <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos animi, expedita dolorum ipsum nam doloribus velit alias commodi libero voluptates. Non rerum minus eum deleniti eveniet? Ullam voluptate suscipit adipisci.</p>
+              <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur esse, ratione ipsum non fugiat molestias. Minus nulla hic eaque alias totam, commodi illum nesciunt, deserunt aliquam iure doloribus qui quam.</p>
+              <p class="mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam eius laudantium reprehenderit libero magnam est deserunt ipsum asperiores fuga, minus sapiente ipsam corporis quas, aperiam tempora aliquam minima modi? Architecto.</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto cupiditate eum quisquam accusantium maiores nam totam hic incidunt maxime expedita, molestias fugiat illum deleniti voluptatem ad error iste quo eligendi!</p>
+            </div>
+          </div>
+        </div>
+        <div x-data="{ open: false}"
+             class="mt-4 p-4 border">
+          <button @click="open = true"
+                  class="py-2 px-4 border rounded-sm">Ouvrir la modal</button>
+          <div x-show="open"
+               class="fixed inset-0 grid place-content-center h-screen bg-black bg-opacity-50">
+            <div class="max-w-screen-lg mx-4 p-4 bg-white rounded-sm shadowed">
+              <div class="flex justify-between items-center pb-4 border-b">
+                <h3 class="text-xl font-semibold">Titre de la modale</h3>
+                <button @click="open = false"
+                        class="py-2 px-4 border rounded-sm">Fermer</button>
+              </div>
+              <div class="py-4">
+                <p class="mb-4">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit alias voluptas ex sapiente enim doloremque laboriosam ratione distinctio aliquam. Dignissimos veritatis veniam dolor at praesentium inventore quo officia debitis ullam.</p>
+                <p class="mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum blanditiis, impedit officia voluptatem fugit aliquid quis dignissimos nisi possimus consectetur iure? Illo natus obcaecati odio explicabo sunt dicta optio doloremque?</p>
+                <p class="mb-4">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit alias voluptas ex sapiente enim doloremque laboriosam ratione distinctio aliquam. Dignissimos veritatis veniam dolor at praesentium inventore quo officia debitis ullam.</p>
+                <p class="mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum blanditiis, impedit officia voluptatem fugit aliquid quis dignissimos nisi possimus consectetur iure? Illo natus obcaecati odio explicabo sunt dicta optio doloremque?</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div x-data="hello"
+             class="mt-4 p-4 border">
+          <button @click="sayHello">Hello</button>
+        </div>
+        <div x-data="posts"
+             class="mt-4">
+          <ul class="flex flex-wrap gap-2.5">
+            <template x-for="post in posts" :key="post.id">
+              <li class="p-4 leading-normal border rounded-sm">
+                <h2 x-text="post.title" class="mb-3 text-xl font-bold"></h2>
+                <p x-text="post.body"></p>
+              </li>
+            </template>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
