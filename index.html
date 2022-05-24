@@ -13,9 +13,10 @@
       <h1 x-text="title"
           class="my-4 text-4xl font-medium text-center"></h1>
 
-      <div x-data="{ show: false}" class="mb-4 p-4 bg-white rounded-sm shadow-sm">
+      <!-- Toggle content -->
+      <div x-data="toggle" class="mb-4 p-4 bg-white rounded-sm shadow-sm">
         <h2 class="mb-4 text-2xl font-semibold">Toggle content</h2>
-        <button @click="show = ! show"
+        <button @click="handleClick"
                 class="py-1 px-4 text-white rounded-sm"
                 :class="{'bg-cyan-900': show === true, 'bg-cyan-500': show === false}">voir</button>
         <div x-show="show"
