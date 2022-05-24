@@ -15,25 +15,32 @@
       class="my-4 text-4xl font-medium text-center"></h1>
 
     <!-- Toggle component -->
-    <div x-data="toggle" class="mb-4 p-4 bg-white rounded-sm shadow-sm">
+    <div x-data="toggle"
+         class="mb-4 p-4 bg-white rounded-sm shadow-sm">
       <h2 class="mb-4 text-2xl font-semibold">Toggle content</h2>
-      <button @click="handleClick" class="py-1 px-4 text-white rounded-sm"
+      <button @click="handleClick"
+              class="py-1 px-4 text-white rounded-sm"
         :class="{'bg-cyan-900': show === true, 'bg-cyan-500': show === false}">voir</button>
-      <div x-show="show" class="mt-4 p-4 text-white bg-cyan-900 rounded-sm">
+      <div x-show="show"
+           class="mt-4 p-4 text-white bg-cyan-900 rounded-sm">
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet a expedita exercitationem omnis recusandae,
           aspernatur nesciunt eaque reiciendis accusamus, animi ut! Ipsam nam provident minus tempore. Explicabo nemo
           nam officiis!</p>
       </div>
     </div>
     <!-- Modale component -->
-    <div x-data="modal(false)" class="mb-4 p-4 bg-white rounded-sm shadow-sm">
+    <div x-data="modal(false)"
+         class="mb-4 p-4 bg-white rounded-sm shadow-sm">
       <h2 class="mb-4 text-2xl font-semibold">Modal</h2>
-      <button @click="openModal" class="py-2 px-4 border rounded-sm">Ouvrir la modal</button>
-      <div x-show="isClosed(true)" class="fixed inset-0 grid place-content-center h-screen bg-black bg-opacity-50">
+      <button @click="openModal"
+              class="py-2 px-4 border rounded-sm">Ouvrir la modal</button>
+      <div x-show="isClosed(true)"
+           class="fixed inset-0 grid place-content-center h-screen bg-black bg-opacity-50">
         <div class="max-w-screen-lg mx-4 p-4 bg-white rounded-sm shadowed">
           <div class="flex justify-between items-center pb-4 border-b">
             <h3 class="text-xl font-semibold">Titre de la modale</h3>
-            <button @click="closeModal" class="py-2 px-4 border rounded-sm">Fermer</button>
+            <button @click="closeModal"
+                    class="py-2 px-4 border rounded-sm">Fermer</button>
           </div>
           <div class="py-4">
             <p class="mb-4">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit alias voluptas ex sapiente
@@ -53,18 +60,30 @@
       </div>
     </div>
     <!-- Fetch posts component -->
-    <div x-data="posts" class="mb-4 p-4 bg-white rounded-sm shadow-sm">
-      <h2 class="mb-4 text-2xl font-semibold">Fetch Posts</h2>
-      <ul class="flex flex-wrap -m-1.5 md:-m-2">
-        <template x-for="post in posts" :key="post.id">
-          <li class="sm:w-1/2 md:w-1/3 lg:w-1/4 p-1.5 md:p-2">
-            <div class="h-full p-4 border rounded-sm">
-              <h2 x-text="post.title" class="mb-3 text-xl font-bold"></h2>
-              <p x-text="post.body"></p>
-            </div>
-          </li>
-        </template>
-      </ul>
+    <div x-data="toggle"
+         class="mb-4 p-4 bg-white rounded-sm shadow-sm">
+      <div class="flex justify-between">
+        <h2 class="text-2xl font-semibold">Fetch Posts</h2>
+        <button @click="handleClick"
+                class="py-1 px-4 rounded-sm"
+        :class="{'bg-slate-500 text-white': show === true, 'bg-slate-200': show === false}">voir</button>
+      </div>
+      <div x-show="show"
+           class="mt-4">
+        <ul x-data="posts"
+            class="flex flex-wrap -m-1.5 md:-m-2">
+          <template x-for="post in posts"
+                    :key="post.id">
+            <li class="sm:w-1/2 md:w-1/3 lg:w-1/4 p-1.5 md:p-2">
+              <div class="h-full p-4 border rounded-sm">
+                <h2 x-text="post.title"
+                    class="mb-3 text-xl font-bold"></h2>
+                <p x-text="post.body"></p>
+              </div>
+            </li>
+          </template>
+        </ul>
+      </div>
     </div>
     <!-- Tabs 2 component -->
     <div x-data="tab('description')"
@@ -117,6 +136,7 @@
         </div>
       </div>
     </div>
+    
   </div>
   <script type="module" src="/main.js"></script>
 </body>
