@@ -26,14 +26,14 @@
       </div>
     </div>
     <!-- Modale component -->
-    <div x-data="{ open: false}" class="mb-4 p-4 bg-white rounded-sm shadow-sm">
+    <div x-data="modal(false)" class="mb-4 p-4 bg-white rounded-sm shadow-sm">
       <h2 class="mb-4 text-2xl font-semibold">Modal</h2>
-      <button @click="open = true" class="py-2 px-4 border rounded-sm">Ouvrir la modal</button>
-      <div x-show="open" class="fixed inset-0 grid place-content-center h-screen bg-black bg-opacity-50">
+      <button @click="openModal" class="py-2 px-4 border rounded-sm">Ouvrir la modal</button>
+      <div x-show="isClosed(true)" class="fixed inset-0 grid place-content-center h-screen bg-black bg-opacity-50">
         <div class="max-w-screen-lg mx-4 p-4 bg-white rounded-sm shadowed">
           <div class="flex justify-between items-center pb-4 border-b">
             <h3 class="text-xl font-semibold">Titre de la modale</h3>
-            <button @click="open = false" class="py-2 px-4 border rounded-sm">Fermer</button>
+            <button @click="closeModal" class="py-2 px-4 border rounded-sm">Fermer</button>
           </div>
           <div class="py-4">
             <p class="mb-4">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit alias voluptas ex sapiente
