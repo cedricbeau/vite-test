@@ -137,7 +137,48 @@
         </div>
       </div>
     </div>
+    <!-- Fetch books component -->
+    <div x-data="toggle"
+         class="mb-4 p-4 bg-white rounded-sm shadow-sm">
+        <div class="flex justify-between">
+        <h2 class="text-2xl font-semibold">Fetch Books</h2>
+        <button @click="handleClick"
+                class="py-1 px-4 rounded-sm"
+        :class="{'bg-slate-500 text-white': show === true, 'bg-slate-200': show === false}">voir</button>
+      </div>
+      <div x-show="show" class="mt-4">
+        <div x-data="books">
+          <div x-show="isLoading">Loading...</div>
+          <ul>
+            <template x-for="(book, index) in books" :key="index">
+              <li class="mb-2 p-4 border">
+                <div>
+                  <div x-show="book.imageLinks.thumbnail"><img :src="book.imageLinks.thumbnail"></div>
+                  <h3 x-show="book.title"><strong>Titre :</strong> <span x-text="book.title"></span></h3>
+                  <div x-show="book.subtitle"><strong>Sous-titre :</strong> <span x-text="book.subtitle"></span></div>
+                  <div x-show="book.authors"><strong>Auteur :</strong> <span x-text="book.authors"></span></div>
+                  <div x-show="book.publisher"><strong>Editeur :</strong> <span x-text="book.publisher"></span></div>
+                  <div x-show="book.publishedDate"><strong>Date de publication :</strong> <span x-text="book.publishedDate"></span></div>
+                  <div x-show="book.description"><strong>Résumé :</strong> <span x-text="book.description"></span></div>
+                  <div x-show="book.language"><strong>Langue :</strong> <span x-text="book.language"></span></div>
+                  <div x-show="book.pageCount"><strong>Nombre de pages :</strong> <span x-text="book.pageCount"></span></div>
+                  <div x-show="book.pageCount"><strong>Type :</strong> <span x-text="book.printType"></span></div>
+                  <div x-show="book.canonicalVolumeLink"><a :href="book.canonicalVolumeLink" class="border-b border-current">Lien vers la fiche</a></div>
+                  <!--<ul>
+                    <li><a :href="book.previewLink" x-text="book.previewLink"></a></li>
+                    <li><a :href="book.infoLink" x-text="book.infoLink"></a></li>
+                    <li><a :href="book.canonicalVolumeLink">Lien vers la fiche</a></li>
+                  </ul>-->
+                  <!--<div x-text="JSON.stringify(book.industryIdentifiers)"></div>-->
+                </div>
+              </li>
+            </template>
+          </ul>
+          <!--<div x-text="JSON.stringify(books)"></div>-->
+        </div>
+      </div>
 
+    </div>
   </div>
   <script type="module" src="/main.js"></script>
 </body>
