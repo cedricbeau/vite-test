@@ -1,7 +1,6 @@
 export default () => ({
 
   books: [],
-  imgs: [],
   isLoading: false,
 
   init () {
@@ -14,7 +13,6 @@ export default () => ({
     .then(response => {
       this.isLoading = false;
       this.books = response.items.map(item => item.volumeInfo)
-      console.log('books', this.books);
     })
   }
 })
