@@ -140,7 +140,7 @@
     <!-- Fetch books component -->
     <div x-data="toggle"
          class="mb-4 p-4 bg-white rounded-sm shadow-sm">
-        <div class="flex justify-between">
+      <div class="flex justify-between">
         <h2 class="text-2xl font-semibold">Fetch Books</h2>
         <button @click="handleClick"
                 class="py-1 px-4 rounded-sm"
@@ -178,6 +178,20 @@
         </div>
       </div>
 
+    </div>
+    <div x-data="toggle"
+         class="mb-4 p-4 bg-white rounded-sm shadow-sm">
+         <div class="flex justify-between">
+          <h2 class="text-2xl font-semibold">Fetch Pokemon</h2>
+          <button @click="handleClick"
+                  class="py-1 px-4 rounded-sm"
+          :class="{'bg-slate-500 text-white': show === true, 'bg-slate-200': show === false}">voir</button>
+        </div>
+        <div x-show="show" class="mt-4">
+          <div x-data="pokemons">
+            <div x-text="JSON.stringify(pokemons)"></div>
+          </div>
+        </div>
     </div>
   </div>
   <script type="module" src="/main.js"></script>
