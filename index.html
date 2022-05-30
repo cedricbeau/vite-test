@@ -169,12 +169,10 @@
                     <li><a :href="book.infoLink" x-text="book.infoLink"></a></li>
                     <li><a :href="book.canonicalVolumeLink">Lien vers la fiche</a></li>
                   </ul>-->
-                  <!--<div x-text="JSON.stringify(book.industryIdentifiers)"></div>-->
                 </div>
               </li>
             </template>
           </ul>
-          <!--<div x-text="JSON.stringify(books)"></div>-->
         </div>
       </div>
 
@@ -189,7 +187,42 @@
         </div>
         <div x-show="show" class="mt-4">
           <div x-data="pokemons">
-            <div x-text="JSON.stringify(pokemons)"></div>
+            <div class="mb-4">
+              <form action="#"
+                    class="flex">
+                <input type="text"
+                      x-model="searchPokemon"
+                      x-on:focus="resetField()"
+                      class="block w-full py-2.5 px-4 border rounded-sm">
+                      <button type="submit"
+                              class="px-4 bg-black text-white rounded-sm"
+                              @click.prevent="displayPokemonDetails()">Chercher</button>
+              </form>
+              <div class="mt-2 p-4 border rounded-sm">
+                <strong>detail</strong>
+                <div id="detail"></div>
+                <template xfor="(details, index) in pokemonDetails" :key="index">
+                  <div>
+                    <div x-text="JSON.stringify(pokemonDetails)"></div>
+                  </div>
+                </template>
+              </div>
+            </div>
+            <div>
+
+            </div>
+            <ul class="flex flex-wrap -m-2">
+              <template x-for="(pokemon, index) in pokemons" :key="index">
+                <li class="m-2">
+                  <a :href="pokemon.url"
+                     target="_blank"
+                     class="block py-2 px-4 border rounded-sm">
+                    <span x-text="pokemon.name"></span>
+                  </a>
+                </li>
+              </template>
+            </ul>
+            <!--<div x-text="JSON.stringify(pokemons)"></div>-->
           </div>
         </div>
     </div>
