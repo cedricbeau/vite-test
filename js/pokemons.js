@@ -40,8 +40,24 @@ export default () => ({
       HTMLstr += `<div><img src="${this.pokemonDetails.sprites.front_default}"></div><div><strong>name :</strong> ${this.pokemonDetails.name}</div><div><strong>height :</strong> ${this.pokemonDetails.height}</div>`;
       document.getElementById('detail').innerHTML = HTMLstr;
     })
+  },
+
+  displayDetails (url) {
+    let HTMLstr = '';
+
+    fetch(url)
+    .then(response => {
+      if (!response.ok) alert(`Something went wrong: ${response.spokemontatus} - ${response.statusText}`)
+      return response.json()
+    })
+    .then(response => {
+      this.pokemonDetails = response
+      console.log('detail : ', this.pokemonDetails)
 
 
+      HTMLstr += `<div><img src="${this.pokemonDetails.sprites.front_default}"></div><div><strong>name :</strong> ${this.pokemonDetails.name}</div><div><strong>height :</strong> ${this.pokemonDetails.height}</div>`;
+      document.getElementById('detail').innerHTML = HTMLstr;
+    })
   },
 
   resetField () {

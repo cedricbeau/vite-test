@@ -209,11 +209,11 @@
             <ul class="flex flex-wrap -m-2">
               <template x-for="(pokemon, index) in pokemons" :key="index">
                 <li class="m-2">
-                  <a :href="pokemon.url"
+                  <button @click.prevent="displayDetails(pokemon.url)"
                      target="_blank"
                      class="block py-2 px-4 border rounded-sm">
                     <span x-text="pokemon.name"></span>
-                  </a>
+                </button>
                 </li>
               </template>
             </ul>
