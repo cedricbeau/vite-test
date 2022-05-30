@@ -37,7 +37,7 @@ export default () => ({
       console.log('detail : ', this.pokemonDetails)
 
 
-      HTMLstr += `<div><img src="${this.pokemonDetails.sprites.front_default}"></div><div><strong>name :</strong> ${this.pokemonDetails.name}</div><div><strong>height :</strong> ${this.pokemonDetails.height}</div>`;
+      HTMLstr += `<div><img src="${this.pokemonDetails.sprites.front_default}" width="96" height="96"></div><div><strong>name :</strong> ${this.pokemonDetails.name}</div><div><strong>height :</strong> ${this.pokemonDetails.height}</div>`;
       document.getElementById('detail').innerHTML = HTMLstr;
     })
   },
@@ -54,8 +54,8 @@ export default () => ({
       this.pokemonDetails = response
       console.log('detail : ', this.pokemonDetails)
 
+      HTMLstr += `<div><img src="${this.pokemonDetails.sprites.front_default}" width="96" height="96"></div><div><strong>name :</strong> ${this.pokemonDetails.name}</div><div><strong>height :</strong> ${this.pokemonDetails.height}</div><div><strong>weight :</strong> ${this.pokemonDetails.weight}</div>`;
 
-      HTMLstr += `<div><img src="${this.pokemonDetails.sprites.front_default}"></div><div><strong>name :</strong> ${this.pokemonDetails.name}</div><div><strong>height :</strong> ${this.pokemonDetails.height}</div>`;
       document.getElementById('detail').innerHTML = HTMLstr;
     })
   },
