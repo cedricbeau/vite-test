@@ -178,56 +178,56 @@
 
     <div x-data="toggle"
          class="mb-4 p-4 bg-white rounded-sm shadow-sm">
-         <div class="flex justify-between">
-          <h2 class="text-2xl font-semibold">Fetch Pokemon</h2>
-          <button @click="handleClick"
-                  class="py-1 px-4 rounded-sm"
-          :class="{'bg-slate-500 text-white': show === true, 'bg-slate-200': show === false}">voir</button>
-        </div>
-        <div x-show="show" class="mt-4">
-          <div x-data="pokemons">
-            <div class="mb-4">
-              <form action="#"
-                    class="flex">
-                <input type="text"
-                      x-model="searchPokemon"
-                      x-on:focus="resetField()"
-                      class="block w-full py-2.5 px-4 text-slate-400 border">
-                      <button type="submit"
-                              class="px-4 bg-slate-200"
-                              @click.prevent="searchPokemonDetails()">Chercher</button>
-              </form>
-            </div>
-            <div class="md:flex md:flex-wrap">
-              <div class="md:w-2/3 md:max-h-96 p-4 border rounded-sm overflow-y-hidden md:overflow-y-auto overflow-x-auto md:overflow-x-hidden">
-                <ul class="flex items-center md:flex-wrap -m-1">
-                  <template x-for="(pokemon, index) in pokemons" :key="index">
-                    <li class="m-1">
-                      <button @click.prevent="displayPokemonDetails(pokemon.url)"
-                              class="block py-2 px-4 text-sm border rounded-sm">
-                        <span x-text="pokemon.name"></span>
+      <div class="flex justify-between">
+        <h2 class="text-2xl font-semibold">Fetch Pokemon</h2>
+        <button @click="handleClick"
+                class="py-1 px-4 rounded-sm"
+        :class="{'bg-slate-500 text-white': show === true, 'bg-slate-200': show === false}">voir</button>
+      </div>
+      <div x-show="show" class="mt-4">
+        <div x-data="pokemons">
+          <div class="mb-4">
+            <form action="#"
+                  class="flex">
+              <input type="text"
+                    x-model="searchPokemon"
+                    x-on:focus="resetField()"
+                    class="block w-full py-2.5 px-4 text-slate-400 border">
+                <button type="submit"
+                        class="px-4 bg-slate-200"
+                        @click.prevent="searchPokemonDetails()">Chercher</button>
+            </form>
+          </div>
+          <div class="md:flex md:flex-wrap">
+            <div class="md:w-2/3 md:max-h-96 p-4 border rounded-sm overflow-y-hidden md:overflow-y-auto overflow-x-auto md:overflow-x-hidden">
+              <ul class="flex items-center md:flex-wrap -m-1">
+                <template x-for="(pokemon, index) in pokemons" :key="index">
+                  <li class="m-1">
+                    <button @click.prevent="displayPokemonDetails(pokemon.url)"
+                            class="block py-2 px-4 text-sm border rounded-sm"
+                            x-text="pokemon.name">
                     </button>
-                    </li>
-                  </template>
-                </ul>
-              </div>
-              <div class="md:w-1/3 mt-4 md:mt-0 pl-4">
-                <div class="flex justify-center">
-                  <div x-show="show" class="w-fit p-4 border rounded-sm">
-                    <div id="detail"></div>
-                      <div class="my-2 p-2 font-semibold text-center bg-slate-100">Type</div>
-                      <div id="types"></div>
-                      <div class="my-2 p-2 font-semibold text-center bg-slate-100">Compétences</div>
-                      <div id="abilities"></div>
-                      <div class="my-2 p-2 font-semibold text-center bg-slate-100">Stats</div>
-                      <div id="stats"></div>
-                  </div>
+                  </li>
+                </template>
+              </ul>
+            </div>
+            <div class="md:w-1/3 mt-4 md:mt-0 pl-4">
+              <div class="flex justify-center">
+                <div x-show="show" class="w-fit p-4 border rounded-sm">
+                  <div id="detail"></div>
+                    <div class="my-2 p-2 font-semibold text-center bg-slate-100">Type</div>
+                    <div id="types"></div>
+                    <div class="my-2 p-2 font-semibold text-center bg-slate-100">Compétences</div>
+                    <div id="abilities"></div>
+                    <div class="my-2 p-2 font-semibold text-center bg-slate-100">Stats</div>
+                    <div id="stats"></div>
                 </div>
               </div>
             </div>
-            <!--<div x-text="JSON.stringify(pokemons)"></div>-->
           </div>
+          <!--<div x-text="JSON.stringify(pokemons)"></div>-->
         </div>
+      </div>
     </div>
   </div>
   <script type="module" src="/main.js"></script>
