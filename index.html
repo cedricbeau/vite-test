@@ -14,210 +14,235 @@
     <h1 x-data="{ title: 'Hello ViteJS, AlpineJS & Tailwind!'}" x-text="title"
       class="my-4 text-4xl font-medium text-center"></h1>
 
-    <!-- Toggle component -->
-    <div x-data="toggle" class="mb-4 p-4 bg-white rounded-sm shadow-sm">
-      <h2 class="mb-4 text-2xl font-semibold">Toggle content</h2>
-      <button @click="handleClick" class="py-1 px-4 text-white rounded-sm"
-        :class="{'bg-cyan-900': show === true, 'bg-cyan-500': show === false}">voir</button>
-      <div x-show="show" class="mt-4 p-4 text-white bg-cyan-900 rounded-sm">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet a expedita exercitationem omnis recusandae,
-          aspernatur nesciunt eaque reiciendis accusamus, animi ut! Ipsam nam provident minus tempore. Explicabo nemo
-          nam officiis!</p>
-      </div>
-    </div>
-    <!-- Modale component -->
-    <div x-data="modal(false)" class="mb-4 p-4 bg-white rounded-sm shadow-sm">
-      <h2 class="mb-4 text-2xl font-semibold">Modal</h2>
-      <button @click="openModal" class="py-2 px-4 border rounded-sm">Ouvrir la modal</button>
-      <div x-show="isClosed(true)" class="fixed inset-0 grid place-content-center h-screen bg-black bg-opacity-50">
-        <div class="max-w-screen-lg mx-4 p-4 bg-white rounded-sm shadowed">
-          <div class="flex justify-between items-center pb-4 border-b">
-            <h3 class="text-xl font-semibold">Titre de la modale</h3>
-            <button @click="closeModal" class="py-2 px-4 border rounded-sm">Fermer</button>
+    <div x-data="tab('toggle')">
+      <ul class="flex justify-center my-4">
+        <li class="m-1.5">
+          <button @click="toggleTab" data-target="toggle" class="py-1 px-4 rounded-sm" :class="{'bg-slate-500 text-white': isActive('toggle'), 'bg-slate-200': !isActive('toggle')}">Toggle</button>
+        </li>
+        <li class="m-1.5">
+          <button @click="toggleTab" data-target="modal" class="py-1 px-4 rounded-sm" :class="{'bg-slate-500 text-white': isActive('modal'), 'bg-slate-200': !isActive('modal')}">Modal</button>
+        </li>
+        <li class="m-1.5">
+          <button @click="toggleTab" data-target="tabzzz" class="py-1 px-4 rounded-sm" :class="{'bg-slate-500 text-white': isActive('tabzzz'), 'bg-slate-200': !isActive('tabzzz')}">Tabz</button>
+        </li>
+        <li class="m-1.5">
+          <button @click="toggleTab" data-target="posts" class="py-1 px-4 rounded-sm" :class="{'bg-slate-500 text-white': isActive('posts'), 'bg-slate-200': !isActive('posts')}">Posts</button>
+        </li>
+        <li class="m-1.5">
+          <button @click="toggleTab" data-target="books" class="py-1 px-4 rounded-sm" :class="{'bg-slate-500 text-white': isActive('books'), 'bg-slate-200': !isActive('books')}">Books</button>
+        </li>
+        <li class="m-1.5">
+          <button @click="toggleTab" data-target="pokemons" class="py-1 px-4 rounded-sm" :class="{'bg-slate-500 text-white': isActive('pokemons'), 'bg-slate-200': !isActive('pokemons')}">Pokemons</button>
+        </li>
+      </ul>
+      <div class="p-4 bg-white rounded-sm shadow-sm">
+        <!-- Toggle component -->
+        <div x-show ="isActive('toggle')">
+          <div x-data="toggle">
+            <h2 class="mb-4 text-2xl font-semibold">Toggle</h2>
+            <button @click="handleClick" class="py-1 px-4 text-white rounded-sm"
+              :class="{'bg-cyan-900': show === true, 'bg-cyan-500': show === false}">voir</button>
+            <div x-show="show" class="mt-4 p-4 text-white bg-cyan-900 rounded-sm">
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet a expedita exercitationem omnis recusandae,
+                aspernatur nesciunt eaque reiciendis accusamus, animi ut! Ipsam nam provident minus tempore. Explicabo nemo
+                nam officiis!</p>
+            </div>
           </div>
-          <div class="py-4">
-            <p class="mb-4">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit alias voluptas ex sapiente
-              enim doloremque laboriosam ratione distinctio aliquam. Dignissimos veritatis veniam dolor at praesentium
-              inventore quo officia debitis ullam.</p>
-            <p class="mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum blanditiis, impedit officia
-              voluptatem fugit aliquid quis dignissimos nisi possimus consectetur iure? Illo natus obcaecati odio
-              explicabo sunt dicta optio doloremque?</p>
-            <p class="mb-4">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit alias voluptas ex sapiente
-              enim doloremque laboriosam ratione distinctio aliquam. Dignissimos veritatis veniam dolor at praesentium
-              inventore quo officia debitis ullam.</p>
-            <p class="mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum blanditiis, impedit officia
-              voluptatem fugit aliquid quis dignissimos nisi possimus consectetur iure? Illo natus obcaecati odio
-              explicabo sunt dicta optio doloremque?</p>
-          </div>
         </div>
-      </div>
-    </div>
-    <!-- Tabs 2 component -->
-    <div x-data="tab('description')" class="mb-4 p-4 bg-white rounded-sm shadow-sm">
-      <h2 class="mb-4 text-2xl font-semibold">Tabz v2</h2>
-      <div class="md:grid md:grid-cols-4">
-        <div class="border-b md:border-0 md:row-start-1 md-row-end-1">
-          <button @click="toggleTab" data-target="description"
-            class="block w-full p-2 md:py-2.5 md:px-4 md:text-center md:bg-slate-100"
-            :class="{'font-semibold md:bg-slate-300': isActive('description')}">Description</button>
-        </div>
-        <div x-show="isActive('description')"
-          class="p-2 md:col-span-full md:row-span-2 md:p-4 md:border md:border-slate-100">
-          <h3 class="mb-2 text-xl font-semibold">Description</h3>
-          <p class="mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat similique, rem consectetur
-            veniam doloremque iusto tempore numquam dolores porro maxime magnam. Odit, consectetur facilis! Eligendi
-            placeat debitis magnam sapiente at.</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor et voluptatum consectetur voluptate
-            recusandae odit inventore sapiente quaerat reiciendis, ullam quasi eius error repudiandae esse, suscipit
-            illum quas necessitatibus iure?</p>
-        </div>
-        <div class="border-b md:border-0 md:row-start-1 md-row-end-1">
-          <button @click="toggleTab" data-target="composition"
-            class="block w-full p-2 md:py-2.5 md:px-4 md:text-center md:bg-slate-100"
-            :class="{'font-semibold md:bg-slate-300': isActive('composition')}">Composition</button>
-        </div>
-        <div x-show="isActive('composition')"
-          class="p-2 md:col-span-full md:row-span-2 md:p-4 md:border md:border-slate-100">
-          <h3 class="mb-2 text-xl font-semibold">Composition</h3>
-          <p class="mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat similique, rem consectetur
-            veniam doloremque iusto tempore numquam dolores porro maxime magnam. Odit, consectetur facilis! Eligendi
-            placeat debitis magnam sapiente at.</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor et voluptatum consectetur voluptate
-            recusandae odit inventore sapiente quaerat reiciendis, ullam quasi eius error repudiandae esse, suscipit
-            illum quas necessitatibus iure?</p>
-        </div>
-        <div class="border-b md:border-0 md:row-start-1 md-row-end-1">
-          <button @click="toggleTab" data-target="conseils"
-            class="block w-full p-2 md:py-2.5 md:px-4 md:text-center md:bg-slate-100"
-            :class="{'font-semibold md:bg-slate-300': isActive('conseils')}">Conseils</button>
-        </div>
-        <div x-show="isActive('conseils')"
-          class="p-2 md:col-span-full md:row-span-2 md:p-4 md:border md:border-slate-100">
-          <h3 class="mb-2 text-xl font-semibold">Conseils</h3>
-          <p class="mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat similique, rem consectetur
-            veniam doloremque iusto tempore numquam dolores porro maxime magnam. Odit, consectetur facilis! Eligendi
-            placeat debitis magnam sapiente at.</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor et voluptatum consectetur voluptate
-            recusandae odit inventore sapiente quaerat reiciendis, ullam quasi eius error repudiandae esse, suscipit
-            illum quas necessitatibus iure?</p>
-        </div>
-        <div class="border-b md:border-0 md:row-start-1 md-row-end-1">
-          <button @click="toggleTab" data-target="avis"
-            class="block w-full p-2 md:py-2.5 md:px-4 md:text-center md:bg-slate-100"
-            :class="{'font-semibold md:bg-slate-300': isActive('avis')}">Avis</button>
-        </div>
-        <div x-show="isActive('avis')" class="p-2 md:col-span-full md:row-span-2 md:p-4 md:border md:border-slate-100">
-          <h3 class="mb-2 text-xl font-semibold">Avis</h3>
-          <p class="mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat similique, rem consectetur
-            veniam doloremque iusto tempore numquam dolores porro maxime magnam. Odit, consectetur facilis! Eligendi
-            placeat debitis magnam sapiente at.</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor et voluptatum consectetur voluptate
-            recusandae odit inventore sapiente quaerat reiciendis, ullam quasi eius error repudiandae esse, suscipit
-            illum quas necessitatibus iure?</p>
-        </div>
-      </div>
-    </div>
-    <!-- Fetch posts component -->
-    <div x-data="toggle" class="mb-4 p-4 bg-white rounded-sm shadow-sm">
-      <div class="flex justify-between">
-        <h2 class="text-2xl font-semibold">Fetch Posts</h2>
-        <button @click="handleClick" class="py-1 px-4 rounded-sm"
-          :class="{'bg-slate-500 text-white': show === true, 'bg-slate-200': show === false}">voir</button>
-      </div>
-      <div x-show="show" class="mt-4">
-        <ul x-data="posts" class="flex flex-wrap -m-1.5 md:-m-2">
-          <template x-for="post in posts" :key="post.id">
-            <li class="sm:w-1/2 md:w-1/3 lg:w-1/4 p-1.5 md:p-2">
-              <div class="h-full p-4 border rounded-sm">
-                <h2 x-text="post.title" class="mb-3 text-xl font-bold"></h2>
-                <p x-text="post.body"></p>
-              </div>
-            </li>
-          </template>
-        </ul>
-      </div>
-    </div>
-    <!-- Fetch books component -->
-    <div x-data="toggle" class="mb-4 p-4 bg-white rounded-sm shadow-sm">
-      <div class="flex justify-between">
-        <h2 class="text-2xl font-semibold">Fetch Books</h2>
-        <button @click="handleClick" class="py-1 px-4 rounded-sm"
-          :class="{'bg-slate-500 text-white': show === true, 'bg-slate-200': show === false}">voir</button>
-      </div>
-      <div x-show="show" class="mt-4">
-        <div x-data="books">
-          <ul class="flex flex-wrap -m-1">
-            <template x-for="(book, index) in books" :key="index">
-              <li class="p-1 w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
-                <div class="p-4 border">
-                  <div x-show="book.imageLinks.thumbnail"><img :src="book.imageLinks.thumbnail"></div>
-                  <h3 x-show="book.title"><strong>Titre :</strong> <span x-text="book.title"></span></h3>
-                  <div x-show="book.subtitle"><strong>Sous-titre :</strong> <span x-text="book.subtitle"></span></div>
-                  <div x-show="book.authors"><strong>Auteur :</strong> <span x-text="book.authors"></span></div>
-                  <div x-show="book.publisher"><strong>Editeur :</strong> <span x-text="book.publisher"></span></div>
-                  <div x-show="book.publishedDate"><strong>Date de publication :</strong> <span
-                      x-text="book.publishedDate"></span></div>
-                  <div x-show="book.description"><strong>Résumé :</strong> <span x-text="book.description"></span></div>
-                  <div x-show="book.language"><strong>Langue :</strong> <span x-text="book.language"></span></div>
-                  <div x-show="book.pageCount"><strong>Nombre de pages :</strong> <span x-text="book.pageCount"></span>
-                  </div>
-                  <div x-show="book.pageCount"><strong>Type :</strong> <span x-text="book.printType"></span></div>
-                  <div x-show="book.canonicalVolumeLink"><a :href="book.canonicalVolumeLink"
-                      class="border-b border-current" target="_blank">Lien vers la fiche</a></div>
+        <!-- Modale component -->
+        <div x-show="isActive('modal')">
+          <div x-data="modal(false)">
+            <h2 class="mb-4 text-2xl font-semibold">Modal</h2>
+            <button @click="openModal" class="py-2 px-4 border rounded-sm">Ouvrir la modal</button>
+            <div x-show="isClosed(true)" class="fixed inset-0 grid place-content-center h-screen bg-black bg-opacity-50">
+              <div class="max-w-screen-lg mx-4 p-4 bg-white rounded-sm shadowed">
+                <div class="flex justify-between items-center pb-4 border-b">
+                  <h3 class="text-xl font-semibold">Titre de la modale</h3>
+                  <button @click="closeModal" class="py-2 px-4 border rounded-sm">Fermer</button>
                 </div>
-              </li>
-            </template>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <!-- Fetch Pokemons component -->
-    <div x-data="toggle" class="mb-4 p-4 bg-white rounded-sm shadow-sm">
-      <div class="flex justify-between">
-        <h2 class="text-2xl font-semibold">Fetch Pokemon</h2>
-        <button @click="handleClick" class="py-1 px-4 rounded-sm"
-          :class="{'bg-slate-500 text-white': show === true, 'bg-slate-200': show === false}">voir</button>
-      </div>
-      <div x-show="show" class="mt-4">
-        <div x-data="pokemons">
-          <div class="mb-4">
-            <form action="#" class="flex">
-              <input type="text" x-model="searchPokemon" x-on:focus="resetField()"
-                class="block w-full py-2.5 px-4 text-slate-400 border">
-              <button type="submit" class="px-4 bg-slate-200" @click.prevent="searchPokemonDetails()">Chercher</button>
-            </form>
+                <div class="py-4">
+                  <p class="mb-4">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit alias voluptas ex sapiente
+                    enim doloremque laboriosam ratione distinctio aliquam. Dignissimos veritatis veniam dolor at praesentium
+                    inventore quo officia debitis ullam.</p>
+                  <p class="mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum blanditiis, impedit officia
+                    voluptatem fugit aliquid quis dignissimos nisi possimus consectetur iure? Illo natus obcaecati odio
+                    explicabo sunt dicta optio doloremque?</p>
+                  <p class="mb-4">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit alias voluptas ex sapiente
+                    enim doloremque laboriosam ratione distinctio aliquam. Dignissimos veritatis veniam dolor at praesentium
+                    inventore quo officia debitis ullam.</p>
+                  <p class="mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum blanditiis, impedit officia
+                    voluptatem fugit aliquid quis dignissimos nisi possimus consectetur iure? Illo natus obcaecati odio
+                    explicabo sunt dicta optio doloremque?</p>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="md:flex md:flex-wrap">
-            <div
-              class="md:w-2/3 md:max-h-96 p-4 border rounded-sm overflow-y-hidden md:overflow-y-auto overflow-x-auto md:overflow-x-hidden">
-              <ul class="flex items-center md:flex-wrap -m-1">
-                <template x-for="(pokemon, index) in pokemons" :key="index">
-                  <li class="m-1">
-                    <button @click.prevent="displayPokemonDetails(pokemon.url)"
-                      class="block py-2 px-4 text-sm border rounded-sm" x-text="pokemon.name">
-                    </button>
+        </div>
+        <!-- Tabs 2 component -->
+        <div x-show="isActive('tabzzz')">
+          <div x-data="tab('description')">
+            <h2 class="mb-4 text-2xl font-semibold">Tabz</h2>
+            <div class="md:grid md:grid-cols-4">
+              <div class="border-b md:border-0 md:row-start-1 md-row-end-1">
+                <button @click="toggleTab" data-target="description"
+                  class="block w-full p-2 md:py-2.5 md:px-4 md:text-center md:bg-slate-100"
+                  :class="{'font-semibold md:bg-slate-300': isActive('description')}">Description</button>
+              </div>
+              <div x-show="isActive('description')"
+                class="p-2 md:col-span-full md:row-span-2 md:p-4 md:border md:border-slate-100">
+                <h3 class="mb-2 text-xl font-semibold">Description</h3>
+                <p class="mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat similique, rem consectetur
+                  veniam doloremque iusto tempore numquam dolores porro maxime magnam. Odit, consectetur facilis! Eligendi
+                  placeat debitis magnam sapiente at.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor et voluptatum consectetur voluptate
+                  recusandae odit inventore sapiente quaerat reiciendis, ullam quasi eius error repudiandae esse, suscipit
+                  illum quas necessitatibus iure?</p>
+              </div>
+              <div class="border-b md:border-0 md:row-start-1 md-row-end-1">
+                <button @click="toggleTab" data-target="composition"
+                  class="block w-full p-2 md:py-2.5 md:px-4 md:text-center md:bg-slate-100"
+                  :class="{'font-semibold md:bg-slate-300': isActive('composition')}">Composition</button>
+              </div>
+              <div x-show="isActive('composition')"
+                class="p-2 md:col-span-full md:row-span-2 md:p-4 md:border md:border-slate-100">
+                <h3 class="mb-2 text-xl font-semibold">Composition</h3>
+                <p class="mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat similique, rem consectetur
+                  veniam doloremque iusto tempore numquam dolores porro maxime magnam. Odit, consectetur facilis! Eligendi
+                  placeat debitis magnam sapiente at.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor et voluptatum consectetur voluptate
+                  recusandae odit inventore sapiente quaerat reiciendis, ullam quasi eius error repudiandae esse, suscipit
+                  illum quas necessitatibus iure?</p>
+              </div>
+              <div class="border-b md:border-0 md:row-start-1 md-row-end-1">
+                <button @click="toggleTab" data-target="conseils"
+                  class="block w-full p-2 md:py-2.5 md:px-4 md:text-center md:bg-slate-100"
+                  :class="{'font-semibold md:bg-slate-300': isActive('conseils')}">Conseils</button>
+              </div>
+              <div x-show="isActive('conseils')"
+                class="p-2 md:col-span-full md:row-span-2 md:p-4 md:border md:border-slate-100">
+                <h3 class="mb-2 text-xl font-semibold">Conseils</h3>
+                <p class="mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat similique, rem consectetur
+                  veniam doloremque iusto tempore numquam dolores porro maxime magnam. Odit, consectetur facilis! Eligendi
+                  placeat debitis magnam sapiente at.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor et voluptatum consectetur voluptate
+                  recusandae odit inventore sapiente quaerat reiciendis, ullam quasi eius error repudiandae esse, suscipit
+                  illum quas necessitatibus iure?</p>
+              </div>
+              <div class="border-b md:border-0 md:row-start-1 md-row-end-1">
+                <button @click="toggleTab" data-target="avis"
+                  class="block w-full p-2 md:py-2.5 md:px-4 md:text-center md:bg-slate-100"
+                  :class="{'font-semibold md:bg-slate-300': isActive('avis')}">Avis</button>
+              </div>
+              <div x-show="isActive('avis')" class="p-2 md:col-span-full md:row-span-2 md:p-4 md:border md:border-slate-100">
+                <h3 class="mb-2 text-xl font-semibold">Avis</h3>
+                <p class="mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat similique, rem consectetur
+                  veniam doloremque iusto tempore numquam dolores porro maxime magnam. Odit, consectetur facilis! Eligendi
+                  placeat debitis magnam sapiente at.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor et voluptatum consectetur voluptate
+                  recusandae odit inventore sapiente quaerat reiciendis, ullam quasi eius error repudiandae esse, suscipit
+                  illum quas necessitatibus iure?</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Fetch posts component -->
+        <div x-show="isActive('posts')">
+          <div class="flex justify-between">
+            <h2 class="text-2xl font-semibold">Posts</h2>
+          </div>
+          <div class="mt-4">
+            <ul x-data="posts" class="flex flex-wrap -m-1.5 md:-m-2">
+              <template x-for="post in posts" :key="post.id">
+                <li class="sm:w-1/2 md:w-1/3 lg:w-1/4 p-1.5 md:p-2">
+                  <div class="h-full p-4 border rounded-sm">
+                    <h2 x-text="post.title" class="mb-3 text-xl font-bold"></h2>
+                    <p x-text="post.body"></p>
+                  </div>
+                </li>
+              </template>
+            </ul>
+          </div>
+        </div>
+        <!-- Fetch books component -->
+        <div x-show="isActive('books')">
+          <div class="flex justify-between">
+            <h2 class="text-2xl font-semibold">Books</h2>
+          </div>
+          <div class="mt-4">
+            <div x-data="books">
+              <ul class="flex flex-wrap -m-1">
+                <template x-for="(book, index) in books" :key="index">
+                  <li class="p-1 w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
+                    <div class="p-4 border">
+                      <div x-show="book.imageLinks.thumbnail"><img :src="book.imageLinks.thumbnail"></div>
+                      <h3 x-show="book.title"><strong>Titre :</strong> <span x-text="book.title"></span></h3>
+                      <div x-show="book.subtitle"><strong>Sous-titre :</strong> <span x-text="book.subtitle"></span></div>
+                      <div x-show="book.authors"><strong>Auteur :</strong> <span x-text="book.authors"></span></div>
+                      <div x-show="book.publisher"><strong>Editeur :</strong> <span x-text="book.publisher"></span></div>
+                      <div x-show="book.publishedDate"><strong>Date de publication :</strong> <span
+                          x-text="book.publishedDate"></span></div>
+                      <div x-show="book.description"><strong>Résumé :</strong> <span x-text="book.description"></span></div>
+                      <div x-show="book.language"><strong>Langue :</strong> <span x-text="book.language"></span></div>
+                      <div x-show="book.pageCount"><strong>Nombre de pages :</strong> <span x-text="book.pageCount"></span>
+                      </div>
+                      <div x-show="book.pageCount"><strong>Type :</strong> <span x-text="book.printType"></span></div>
+                      <div x-show="book.canonicalVolumeLink"><a :href="book.canonicalVolumeLink"
+                          class="border-b border-current" target="_blank">Lien vers la fiche</a></div>
+                    </div>
                   </li>
                 </template>
               </ul>
             </div>
-            <div class="md:w-1/3 mt-4 md:mt-0 pl-4">
-              <div class="flex justify-center">
-                <div x-show="show" class="w-fit p-4 border rounded-sm">
-                  <div id="detail"></div>
-                  <div class="my-2 p-2 font-semibold text-center bg-slate-100">Type</div>
-                  <div id="types"></div>
-                  <div class="my-2 p-2 font-semibold text-center bg-slate-100">Compétences</div>
-                  <div id="abilities"></div>
-                  <div class="my-2 p-2 font-semibold text-center bg-slate-100">Stats</div>
-                  <div id="stats"></div>
+          </div>
+        </div>
+        <!-- Fetch Pokemons component -->
+        <div x-show="isActive('pokemons')">
+          <div class="flex justify-between">
+            <h2 class="text-2xl font-semibold">Pokemons</h2>
+          </div>
+          <div class="mt-4">
+            <div x-data="pokemons">
+              <div class="mb-4">
+                <form action="#" class="flex">
+                  <input type="text" x-model="searchPokemon" x-on:focus="resetField()"
+                    class="block w-full py-2.5 px-4 text-slate-400 border">
+                  <button type="submit" class="px-4 bg-slate-200" @click.prevent="searchPokemonDetails()">Chercher</button>
+                </form>
+              </div>
+              <div class="md:flex md:flex-wrap">
+                <div
+                  class="md:w-2/3 md:max-h-96 p-4 border rounded-sm overflow-y-hidden md:overflow-y-auto overflow-x-auto md:overflow-x-hidden">
+                  <ul class="flex items-center md:flex-wrap -m-1">
+                    <template x-for="(pokemon, index) in pokemons" :key="index">
+                      <li class="m-1">
+                        <button @click.prevent="displayPokemonDetails(pokemon.url)"
+                          class="block py-2 px-4 text-sm border rounded-sm" x-text="pokemon.name">
+                        </button>
+                      </li>
+                    </template>
+                  </ul>
+                </div>
+                <div class="md:w-1/3 mt-4 md:mt-0 pl-4">
+                  <div class="flex justify-center">
+                    <div x-show="show" class="w-fit p-4 border rounded-sm">
+                      <div id="detail"></div>
+                      <div class="my-2 p-2 font-semibold text-center bg-slate-100">Type</div>
+                      <div id="types"></div>
+                      <div class="my-2 p-2 font-semibold text-center bg-slate-100">Compétences</div>
+                      <div id="abilities"></div>
+                      <div class="my-2 p-2 font-semibold text-center bg-slate-100">Stats</div>
+                      <div id="stats"></div>
+                    </div>
+                  </div>
                 </div>
               </div>
+              <!--<div x-text="JSON.stringify(pokemons)"></div>-->
             </div>
           </div>
-          <!--<div x-text="JSON.stringify(pokemons)"></div>-->
         </div>
       </div>
     </div>
+
   </div>
   <script type="module" src="/main.js"></script>
 </body>
