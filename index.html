@@ -15,7 +15,7 @@
       class="my-4 text-4xl font-medium text-center"></h1>
 
     <div x-data="tab('toggle')">
-      <ul class="flex justify-center my-4">
+      <ul class="flex flex-wrap justify-center my-4">
         <li class="m-1.5">
           <button @click="toggleTab" data-target="toggle" class="py-1 px-4 rounded-sm" :class="{'bg-slate-500 text-white': isActive('toggle'), 'bg-slate-200': !isActive('toggle')}">Toggle</button>
         </li>
