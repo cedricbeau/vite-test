@@ -7,6 +7,7 @@ import posts from './js/posts.js';
 import modal from './js/modal.js';
 import books from './js/books.js';
 import pokemons from './js/pokemons';
+import todos from './js/todos';
 
 // Add custom components
 Alpine.data('toggle', toggle);
@@ -15,7 +16,7 @@ Alpine.data('posts', posts);
 Alpine.data('modal', modal);
 Alpine.data('books', books);
 Alpine.data('pokemons', pokemons);
-
+Alpine.data('todos', todos);
 
 window.Alpine = Alpine;
 Alpine.start();

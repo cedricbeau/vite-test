@@ -10,6 +10,10 @@
 </head>
 
 <body class="min-h-screen text-slate-700 bg-slate-100">
+  <svg style="display:none">
+    <symbol id="icon-cancel-circle" viewBox="0 0 32 32"><path d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13z"></path><path d="M21 8l-5 5-5-5-3 3 5 5-5 5 3 3 5-5 5 5 3-3-5-5 5-5z"></path></symbol>
+  </svg>
+
   <div class="max-w-screen-2xl mx-auto px-4">
     <h1 x-data="{ title: 'Hello ViteJS, AlpineJS & Tailwind!'}" x-text="title"
       class="my-4 text-4xl font-medium text-center"></h1>
@@ -33,6 +37,9 @@
         </li>
         <li class="m-1.5">
           <button @click="toggleTab" data-target="pokemons" class="py-1 px-4 rounded-sm" :class="{'bg-slate-500 text-white': isActive('pokemons'), 'bg-slate-200': !isActive('pokemons')}">Pokemons</button>
+        </li>
+        <li class="m-1.5">
+          <button @click="toggleTab" data-target="todos" class="py-1 px-4 rounded-sm" :class="{'bg-slate-500 text-white': isActive('todos'), 'bg-slate-200': !isActive('todos')}">Todos</button>
         </li>
       </ul>
       <div class="p-4 bg-white rounded-sm shadow-sm">
@@ -147,9 +154,7 @@
         </div>
         <!-- Posts component -->
         <div x-show="isActive('posts')">
-          <div class="flex justify-between">
-            <h2 class="text-2xl font-semibold">Posts</h2>
-          </div>
+          <h2 class="text-2xl font-semibold">Posts</h2>
           <div class="mt-4">
             <ul x-data="posts" class="flex flex-wrap -m-1.5 md:-m-2">
               <template x-for="post in posts" :key="post.id">
@@ -165,9 +170,7 @@
         </div>
         <!-- Books component -->
         <div x-show="isActive('books')">
-          <div class="flex justify-between">
-            <h2 class="text-2xl font-semibold">Books</h2>
-          </div>
+          <h2 class="text-2xl font-semibold">Books</h2>
           <div class="mt-4">
             <div x-data="books">
               <ul class="flex flex-wrap -m-1">
@@ -197,9 +200,7 @@
         </div>
         <!-- Pokemons component -->
         <div x-show="isActive('pokemons')">
-          <div class="flex justify-between">
-            <h2 class="text-2xl font-semibold">Pokemons</h2>
-          </div>
+          <h2 class="text-2xl font-semibold">Pokemons</h2>
           <div class="mt-4">
             <div x-data="pokemons">
               <div class="mb-4">
@@ -240,6 +241,40 @@
             </div>
           </div>
         </div>
+        <!-- Todos component -->
+        <div x-show="isActive('todos')">
+          <h2 class="text-2xl font-semibold">Todos</h2>
+          <div class="mt-4">
+            <div x-data="todos">
+              <div>
+                <input type="text" x-model="newTodo" placeholder="Nouvelle tâche" class="w-full p-4 border rounded-sm" @keydown.enter="addTodo">
+              </div>
+              <ul>
+                <template x-for="(todo, index) in todos" :key="index">
+                  <li class="flex items-center p-4 border-b border-slate-200">
+                    <span x-text="index"
+                    class="mr-4 py-2 px-2 text-xs leading-none bg-slate-100 rounded"></span>
+                    <input type="checkbox"
+                          :id="index"
+                          @change="toggleTodoCompleted(index)"
+                          :checked="todo.completed">
+                    <label :for="index"
+                          x-text="todo.todo"
+                          class="px-4 cursor-pointer"
+                          :class="{ 'line-through' : todo.completed}"></label>
+                    <button @click="deleteTodo(index)" class="ml-auto">
+                      <svg class="fill-current text-red-400" width="18" height="18"><use xlink:href="#icon-cancel-circle"></use></svg>
+                    </button>
+                  </li>
+                </template>
+              </ul>
+              <div class="mt-8">
+                <p><span x-text="todosCompleted"></span> / <span x-text="todosCount"></span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
