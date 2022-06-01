@@ -20,7 +20,7 @@
 
     <div x-data="tab('Toggle')">
       <ul class="flex flex-wrap justify-center my-4" x-data="menu">
-        <template x-for="(item, inddex) in menu">
+        <template x-for="(item, index) in menu" :key="index">
           <li class="m-1.5">
             <button @click="toggleTab" :data-target="item" class="py-1 px-4 rounded-sm" :class="{'bg-slate-500 text-white': isActive(item), 'bg-slate-200': !isActive(item)}" x-text="item"></button>
           </li>
