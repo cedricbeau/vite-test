@@ -41,6 +41,9 @@
         <li class="m-1.5">
           <button @click="toggleTab" data-target="todos" class="py-1 px-4 rounded-sm" :class="{'bg-slate-500 text-white': isActive('todos'), 'bg-slate-200': !isActive('todos')}">Todos</button>
         </li>
+        <li class="m-1.5">
+          <button @click="toggleTab" data-target="colors" class="py-1 px-4 rounded-sm" :class="{'bg-slate-500 text-white': isActive('colors'), 'bg-slate-200': !isActive('colors')}">Colors</button>
+      </li>
       </ul>
       <div class="p-4 bg-white rounded-sm shadow-sm">
         <!-- Toggle component -->
@@ -274,6 +277,46 @@
             </div>
           </div>
         </div>
+        <!-- Select color component -->
+        <div x-show="isActive('colors')">
+          <h2 class="mb-4 text-2xl font-semibold">Colors</h2>
+          <div x-data="{ color: '' }">
+            <div class="flex flex-wrap mb-10">
+              <div class="w-full md:w-2/6 mb-4 md:mb-0 md:pr-4">
+                <div x-data="colors">
+                  <select name="colors" id="colors" class="w-full p-2 bg-white border rounded-sm" x-model="color">
+                    <option value="">Choisir une couleur</option>
+                    <template x-for="(color, index) in colors" :key="index">
+                      <option :key="index" :value="color" x-text="color"></option>
+                    </template>
+                  </select>
+                </div>
+              </div>
+              <div class="w-full md:w-4/6">
+                <div class="h-full p-10 md:p-0 rounded-sm" :style="{'background': color}"></div>
+              </div>
+            </div>
+          </div>
+          <div x-data="{ colorz: '' }">
+            <div class="flex flex-wrap">
+              <div class="w-full md:w-2/6 mb-4 md:mb-0 md:pr-4">
+                <div x-data="colors" class="flex flex-wrap -m-2.5" >
+                  <template x-for="(color, index), in colors" :key="index">
+                    <span class="flex items-center p-2.5">
+                      <input type="radio" name="color" :id="color" :value="color" x-model="colorz">
+                      <label :for="color" x-text="color" class="ml-2"></label>
+                    </span>
+                  </template>
+                </div>
+              </div>
+              <div class="w-full md:w-4/6">
+                <div class="h-full p-10 rounded-sm" :style="{ 'background': colorz}"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
 
       </div>
     </div>
