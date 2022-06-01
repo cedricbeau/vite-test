@@ -10,6 +10,7 @@ import books from './js/books.js';
 import pokemons from './js/pokemons';
 import todos from './js/todos';
 import colors from './js/colors';
+import gallery from './js/gallery';
 
 // Add custom components
 Alpine.data('menu', menu);
@@ -21,6 +22,7 @@ Alpine.data('books', books);
 Alpine.data('pokemons', pokemons);
 Alpine.data('todos', todos);
 Alpine.data('colors', colors);
+Alpine.data('gallery', gallery);
 
 window.Alpine = Alpine;
 Alpine.start();
