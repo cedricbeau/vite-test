@@ -3,10 +3,6 @@ export default () => ({
   newTodo: '',
   todos: [],
 
-  init () {
-    console.log('hello todos')
-  },
-
   addTodo () {
     this.todos.push({
       todo: this.newTodo,
