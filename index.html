@@ -18,36 +18,17 @@
     <h1 x-data="{ title: 'Hello ViteJS, AlpineJS & Tailwind!'}" x-text="title"
       class="my-4 text-4xl font-medium text-center"></h1>
 
-    <div x-data="tab('toggle')">
-      <ul class="flex flex-wrap justify-center my-4">
-        <li class="m-1.5">
-          <button @click="toggleTab" data-target="toggle" class="py-1 px-4 rounded-sm" :class="{'bg-slate-500 text-white': isActive('toggle'), 'bg-slate-200': !isActive('toggle')}">Toggle</button>
-        </li>
-        <li class="m-1.5">
-          <button @click="toggleTab" data-target="modal" class="py-1 px-4 rounded-sm" :class="{'bg-slate-500 text-white': isActive('modal'), 'bg-slate-200': !isActive('modal')}">Modal</button>
-        </li>
-        <li class="m-1.5">
-          <button @click="toggleTab" data-target="tabzzz" class="py-1 px-4 rounded-sm" :class="{'bg-slate-500 text-white': isActive('tabzzz'), 'bg-slate-200': !isActive('tabzzz')}">Tabz</button>
-        </li>
-        <li class="m-1.5">
-          <button @click="toggleTab" data-target="posts" class="py-1 px-4 rounded-sm" :class="{'bg-slate-500 text-white': isActive('posts'), 'bg-slate-200': !isActive('posts')}">Posts</button>
-        </li>
-        <li class="m-1.5">
-          <button @click="toggleTab" data-target="books" class="py-1 px-4 rounded-sm" :class="{'bg-slate-500 text-white': isActive('books'), 'bg-slate-200': !isActive('books')}">Books</button>
-        </li>
-        <li class="m-1.5">
-          <button @click="toggleTab" data-target="pokemons" class="py-1 px-4 rounded-sm" :class="{'bg-slate-500 text-white': isActive('pokemons'), 'bg-slate-200': !isActive('pokemons')}">Pokemons</button>
-        </li>
-        <li class="m-1.5">
-          <button @click="toggleTab" data-target="todos" class="py-1 px-4 rounded-sm" :class="{'bg-slate-500 text-white': isActive('todos'), 'bg-slate-200': !isActive('todos')}">Todos</button>
-        </li>
-        <li class="m-1.5">
-          <button @click="toggleTab" data-target="colors" class="py-1 px-4 rounded-sm" :class="{'bg-slate-500 text-white': isActive('colors'), 'bg-slate-200': !isActive('colors')}">Colors</button>
-      </li>
+    <div x-data="tab('Toggle')">
+      <ul class="flex flex-wrap justify-center my-4" x-data="menu">
+        <template x-for="(item, inddex) in menu">
+          <li class="m-1.5">
+            <button @click="toggleTab" :data-target="item" class="py-1 px-4 rounded-sm" :class="{'bg-slate-500 text-white': isActive(item), 'bg-slate-200': !isActive(item)}" x-text="item"></button>
+          </li>
+        </template>
       </ul>
       <div class="p-4 bg-white rounded-sm shadow-sm">
         <!-- Toggle component -->
-        <div x-show ="isActive('toggle')">
+        <div x-show ="isActive('Toggle')">
           <h2 class="mb-4 text-2xl font-semibold">Toggle</h2>
           <div x-data="toggle">
             <button @click="handleClick" class="py-1 px-4 text-white rounded-sm"
@@ -60,7 +41,7 @@
           </div>
         </div>
         <!-- Modale component -->
-        <div x-show="isActive('modal')">
+        <div x-show="isActive('Modal')">
           <h2 class="mb-4 text-2xl font-semibold">Modal</h2>
           <div x-data="modal(false)">
             <button @click="openModal" class="py-2 px-4 border rounded-sm">Ouvrir la modal</button>
@@ -89,7 +70,7 @@
           </div>
         </div>
         <!-- Tabs component -->
-        <div x-show="isActive('tabzzz')">
+        <div x-show="isActive('Tabs')">
           <h2 class="mb-4 text-2xl font-semibold">Tabz</h2>
           <div x-data="tab('description')">
             <div class="md:grid md:grid-cols-4">
@@ -156,7 +137,7 @@
           </div>
         </div>
         <!-- Posts component -->
-        <div x-show="isActive('posts')">
+        <div x-show="isActive('Posts')">
           <h2 class="mb-4 text-2xl font-semibold">Posts</h2>
           <ul x-data="posts" class="flex flex-wrap -m-1.5 md:-m-2">
             <template x-for="post in posts" :key="post.id">
@@ -170,7 +151,7 @@
           </ul>
         </div>
         <!-- Books component -->
-        <div x-show="isActive('books')">
+        <div x-show="isActive('Books')">
           <h2 class="mb-4 text-2xl font-semibold">Books</h2>
           <div x-data="books">
             <ul class="flex flex-wrap -m-1">
@@ -198,7 +179,7 @@
           </div>
         </div>
         <!-- Pokemons component -->
-        <div x-show="isActive('pokemons')">
+        <div x-show="isActive('Pokemons')">
           <h2 class="mb-4 text-2xl font-semibold">Pokemons</h2>
           <div x-data="pokemons">
             <div class="mb-4">
@@ -239,7 +220,7 @@
           </div>
         </div>
         <!-- Todos component -->
-        <div x-show="isActive('todos')">
+        <div x-show="isActive('Todos')">
           <h2 class="text-2xl font-semibold">Todos</h2>
           <div class="mt-4">
             <div x-data="todos">
@@ -272,7 +253,7 @@
           </div>
         </div>
         <!-- Select color component -->
-        <div x-show="isActive('colors')">
+        <div x-show="isActive('Colors')">
           <h2 class="mb-4 text-2xl font-semibold">Colors</h2>
           <div x-data="{ color: '' }">
             <div class="flex flex-wrap mb-10">

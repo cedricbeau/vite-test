@@ -1,6 +1,7 @@
 import Alpine from 'alpinejs';
 
 // Import custom components
+import menu from './js/menu';
 import toggle from './js/toggle.js';
 import tab from './js/tab';
 import posts from './js/posts.js';
@@ -11,6 +12,7 @@ import todos from './js/todos';
 import colors from './js/colors';
 
 // Add custom components
+Alpine.data('menu', menu);
 Alpine.data('toggle', toggle);
 Alpine.data('tab', tab);
 Alpine.data('posts', posts);
