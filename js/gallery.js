@@ -13,7 +13,6 @@ export default () => ({
     .then(response => response.json())
     .then(data => {
       this.images = data.results;
-      console.log(this.images)
     });
   },
 

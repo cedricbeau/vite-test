@@ -11,6 +11,7 @@ import pokemons from './js/pokemons';
 import todos from './js/todos';
 import colors from './js/colors';
 import gallery from './js/gallery';
+import weather from './js/weather';
 
 // Add custom components
 Alpine.data('menu', menu);
@@ -23,6 +24,7 @@ Alpine.data('pokemons', pokemons);
 Alpine.data('todos', todos);
 Alpine.data('colors', colors);
 Alpine.data('gallery', gallery);
+Alpine.data('weather', weather);
 
 window.Alpine = Alpine;
 Alpine.start();

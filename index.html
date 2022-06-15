@@ -54,7 +54,7 @@
     <h1 x-data="{ title: 'Hello ViteJS, AlpineJS & Tailwind!'}" x-text="title"
       class="my-4 text-4xl font-medium text-center"></h1>
 
-    <div x-data="tab('Gallery')">
+    <div x-data="tab('Weather')">
       <ul class="flex flex-wrap justify-center my-4" x-data="menu">
         <template x-for="(item, index) in menu" :key="index">
           <li class="m-1.5">
@@ -419,6 +419,22 @@
                 </li>
               </template>
             </ul>
+          </div>
+        </div>
+        <!-- Weather component -->
+        <div x-show="isActive('Weather')">
+          <h2 class="mb-4 text-2xl font-semibold">Weather</h2>
+          <div x-data="weather">
+            <div class="flex flex-wrap justify-center p-2 border border-slate-400 rounded">
+              <input type="text" placeholder="Rechercher une ville" class="flex-auto p-2 mr-2 text-sm text-slate-400" x-model="searchValue" x-on:focus="resetField" @keyup.enter="searchCity()">
+              <button class="" @click.prevent="searchCity">
+                <svg class="fill-slate-500" width="26" height="26">
+                  <use xlink:href="#icon-search"></use>
+                </svg>
+              </button>
+            </div>
+            <div id="cityResult"></div>
+            <div id="datasResult" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
           </div>
         </div>
       </div>
